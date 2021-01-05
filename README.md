@@ -1,1 +1,2 @@
 # ServidorMuyGuay
+propiedad de joaquin
