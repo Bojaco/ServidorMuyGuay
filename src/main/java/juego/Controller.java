@@ -1,8 +1,6 @@
-package com.example.ServidorMuyGuay;
+package juego;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.ServidorMuyGuay.JuegoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +11,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class PepejucionController {
+public class Controller {
     @Autowired
-    private JuegoRepository repository;
+    private Repository repository;
     @GetMapping("/juegos")
     public ResponseEntity<List<Juego>> getAllJuegos(@RequestParam(required = false) String name) {
         List<Juego> juegos = new ArrayList<Juego>();
