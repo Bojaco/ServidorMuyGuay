@@ -1,4 +1,4 @@
-package com.example.ServidorMuyGuay;
+package juego;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
 
