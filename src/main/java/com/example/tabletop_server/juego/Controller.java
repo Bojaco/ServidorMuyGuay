@@ -1,4 +1,4 @@
-package juego;
+package com.example.tabletop_server.juego;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,30 +14,32 @@ import java.util.Optional;
 public class Controller {
     @Autowired
     private Repository repository;
+
     @GetMapping("/juegos")
     public ResponseEntity<List<Juego>> getAllJuegos(@RequestParam(required = false) String name) {
         List<Juego> juegos = new ArrayList<Juego>();
-        if (name==null) {
-        repository.findAll().forEach(juegos::add);}
-        else {
+        if (name == null) {
+            repository.findAll().forEach(juegos::add);
+        } else {
             repository.findByNombre(name).forEach(juegos::add);
         }
         if (juegos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(juegos,HttpStatus.OK);
+        return new ResponseEntity<>(juegos, HttpStatus.OK);
     }
+
     @GetMapping("/juegos/{id}")
     public ResponseEntity<Juego> getById(@PathVariable("id") String id) {
         Optional<Juego> giocco = null;
         giocco = repository.findById(id);
         if (giocco.isPresent()) {
             return new ResponseEntity<>(giocco.get(), HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
+
     @PostMapping("/juegos")
     public ResponseEntity<Juego> crearJuego(@RequestBody Juego juego) {
         if (juego.getDificultad() > 5) {
@@ -50,6 +52,7 @@ public class Controller {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PutMapping("/juegos/{id}")
     public ResponseEntity<Juego> putJuegos(@PathVariable("id") String id, @RequestBody Juego juego) {
         Optional<Juego> juegoData = repository.findById(id);
@@ -65,8 +68,7 @@ public class Controller {
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        }
-        else {
+        } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }

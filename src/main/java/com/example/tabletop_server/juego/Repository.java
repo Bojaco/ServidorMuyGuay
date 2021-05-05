@@ -1,4 +1,4 @@
-package juego;
+package com.example.tabletop_server.juego;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;

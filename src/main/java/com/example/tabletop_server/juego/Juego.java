@@ -1,9 +1,7 @@
-package juego;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+package com.example.tabletop_server.juego;
 import org.springframework.data.annotation.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.repository.MongoRepository;
 
 
 import javax.validation.constraints.Max;
