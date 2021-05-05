@@ -70,16 +70,4 @@ public class Controller {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping("/juegos/{id}")
-    public ResponseEntity<Juego> deleteJuegos(@PathVariable("id") String id) {
-        if (!repository.existsById(id)) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
-        try {
-            repository.deleteById(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }
